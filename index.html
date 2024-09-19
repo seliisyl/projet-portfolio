@@ -35,9 +35,39 @@
         <a href="#evenements" class="cta-button">Découvrez nos événements</a>
     </section>
 
+    <!-- Formulaire d'inscription -->
+    <section id="inscription">
+        <h2>Inscrivez-vous pour participer à l'événement</h2>
+        <form id="registrationForm">
+            <label for="name">Nom complet :</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">S'inscrire</button>
+        </form>
+
+        <h2>Déjà inscrit ? Connectez-vous ici :</h2>
+        <form id="loginForm">
+            <label for="loginEmail">Email :</label>
+            <input type="email" id="loginEmail" name="loginEmail" required>
+
+            <label for="loginPassword">Mot de passe :</label>
+            <input type="password" id="loginPassword" name="loginPassword" required>
+
+            <button type="submit">Se connecter</button>
+        </form>
+    </section>
+
     <!-- Footer -->
     <footer>
         <p>© 2024 Nom de ton agence. Tous droits réservés.</p>
     </footer>
+
+    <script src="app.js"></script>
 </body>
 </html>
