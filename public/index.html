@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nom de ton site</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- En-tête de la page -->
@@ -22,12 +22,29 @@
         </div>
     </section>
 
-    <!-- Section Téléchargement et Galerie de Vidéos -->
-    <section id="uploadSection">
+    <!-- Section Description/Services -->
+    <section id="presentation">
+        <h2>Découvrez [Nom du Site]</h2>
+        <p>
+            Découvrez [Nom du Site], une plateforme interactive révolutionnaire pour vos événements. 
+            Avec notre service, chaque participant peut partager en direct des vidéos et contenus via 
+            des géotags, qui seront projetés sur des écrans sur place, créant ainsi une expérience immersive 
+            et collective. Mais ce n’est pas tout : nous compilons tous ces contenus pour former une capsule 
+            temporelle numérique, préservant vos souvenirs de manière innovante et durable.
+        </p>
+        <p>
+            Grâce à la géolocalisation et aux vidéos en direct, chaque participant contribue à l'événement en 
+            temps réel, qu'il soit présent ou non. Cette approche unique fusionne l’interaction sociale en ligne 
+            avec l’expérience physique de l’événement, vous permettant de vivre et revivre les moments forts de manière 
+            inédite. Choisissez [Nom du Site] pour transformer vos événements en expériences mémorables et participatives.
+        </p>
+    </section>
+
+    <!-- Section Upload de vidéos -->
+    <section id="upload-video">
         <h2>Téléchargez votre vidéo</h2>
-        <form id="videoUploadForm" enctype="multipart/form-data">
-            <label for="video">Choisir une vidéo :</label>
-            <input type="file" id="video" name="video" accept="video/*" required>
+        <form id="videoForm">
+            <input type="file" id="videoInput" accept="video/*">
             <button type="submit">Envoyer la vidéo</button>
         </form>
         <h3>Galerie de vidéos</h3>
@@ -73,8 +90,7 @@
         <p>© 2024 Nom de ton agence. Tous droits réservés.</p>
     </footer>
 
-    <!-- Script pour gérer les interactions JavaScript -->
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="js/app.js"></script>
+    <script src="/socket.io/socket.io.js"></script> <!-- Ajouté pour Socket.IO -->
+    <script src="app.js"></script>
 </body>
 </html>
