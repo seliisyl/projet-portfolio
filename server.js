@@ -7,8 +7,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-// Servir les fichiers statiques du dossier 'public'
-app.use(express.static(path.join(__dirname, 'public')));
+// Servir les fichiers statiques du dossier 'frontend'
+app.use(express.static(path.join(__dirname, 'frontend')));
 
 // Gestion des événements Socket.IO
 io.on('connection', (socket) => {
