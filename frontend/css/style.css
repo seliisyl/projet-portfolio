@@ -26,6 +26,30 @@ h1, h2 {
     text-align: center;
 }
 
+/* Styles pour la barre de navigation */
+.navbar {
+    list-style-type: none; /* Enlève les puces */
+    padding: 0; /* Enlève le padding par défaut */
+    text-align: center; /* Centre les éléments */
+    margin: 10px 0; /* Marge au-dessus et en-dessous */
+}
+
+.navbar li {
+    display: inline; /* Affiche les éléments en ligne */
+    margin: 0 15px; /* Marge entre les éléments */
+}
+
+.navbar a {
+    text-decoration: none; /* Enlève le soulignement */
+    color: var(--texte-noir); /* Couleur du texte */
+    font-weight: 600; /* Poids du texte */
+    transition: color 0.3s; /* Animation de transition */
+}
+
+.navbar a:hover {
+    color: var(--beige-fonce); /* Changement de couleur au survol */
+}
+
 .container {
     max-width: 800px;
     margin: 20px auto;
