@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Événements en cours</h1>
+    </header>
+
+    <section id="events-list">
+        <h2>Choisissez un événement</h2>
+        <ul>
+            <li><button class="event-button" data-event-id="1">Événement 1</button></li>
+            <li><button class="event-button" data-event-id="2">Événement 2</button></li>
+            <li><button class="event-button" data-event-id="3">Événement 3</button></li>
+            <!-- Ajoutez plus d'événements ici -->
+        </ul>
+    </section>
+
+    <section id="access-event" style="display: none;">
+        <h2>Accès à l'événement</h2>
+        <form id="accessForm">
+            <label for="eventId">Identifiant de l'événement :</label>
+            <input type="text" id="eventId" name="eventId" required>
+
+            <label for="eventPassword">Mot de passe :</label>
+            <input type="password" id="eventPassword" name="eventPassword" required>
+
+            <button type="submit">Accéder à l'événement</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 YOULIVE. Tous droits réservés.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+

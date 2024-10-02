@@ -84,3 +84,15 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+/* CSS pour l'animation de l'apparition du texte */
+.fade-in {
+    opacity: 0; /* Invisible au départ */
+    transform: translateY(20px); /* Décalage vers le bas */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition douce */
+}
+
+.fade-in.visible {
+    opacity: 1; /* Visible lorsque la classe 'visible' est ajoutée */
+    transform: translateY(0); /* Retour à la position d'origine */
+}

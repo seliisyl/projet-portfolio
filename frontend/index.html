@@ -3,109 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOULIVE</title>
-
-    <!-- Intégration de la police Open Sans depuis Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/style.css">
+    <title>Accueil - YOULIVE</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Chemin vers le CSS -->
 </head>
 <body>
-    <!-- En-tête de la page -->
     <header>
         <h1>Bienvenue sur notre plateforme interactive d'événements</h1>
         <nav>
             <ul>
-                <li><a href="#evenements-live">Événements</a></li>
-                <li><a href="#galerie">Galerie</a></li>
-                <li><a href="#prestation">Prestations</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html">Accueil</a></li> <!-- Lien vers la page d'accueil -->
+                <li><a href="events.html">Événements</a></li> <!-- Lien vers la page des événements -->
+                <li><a href="gallery.html">Galerie</a></li> <!-- Lien vers la galerie -->
+                <li><a href="services.html">Prestations</a></li> <!-- Lien vers les prestations -->
+                <li><a href="contact.html">Contact</a></li> <!-- Lien vers les informations de contact -->
             </ul>
         </nav>
     </header>
 
-    <!-- Section Vidéos/Images des événements -->
-    <section id="evenements-live">
-        <h2>Partagez vos moments en direct grâce à nos services innovants</h2>
-        <p>Images et vidéos en direct des événements</p>
-        <div class="carousel">
-            <img src="image/image_1.jpg" alt="Événement en direct">
-            <img src="image/image2.jpg" alt="Événement en direct">
-            <img src="image/image3.jpg" alt="Événement en direct">
-        </div>
-    </section>
+    <div class="container">
+        <h2 class="fade-in">Qu'est-ce que YOULIVE ?</h2>
+        <p class="fade-in">Découvrez YOULIVE, une plateforme interactive révolutionnaire pour vos événements. Avec notre service, chaque participant peut partager en direct des vidéos et contenus via des géotags, qui seront projetés sur des écrans sur place, créant ainsi une expérience immersive et collective.</p>
+        
+        <p class="fade-in">Nous compilons tous ces contenus pour former une capsule temporelle numérique, préservant vos souvenirs de manière innovante et durable. Grâce à la géolocalisation et aux vidéos en direct, chaque participant contribue à l'événement en temps réel, qu'il soit présent ou non.</p>
 
-    <!-- Section Description/Services -->
-    <section id="presentation">
-        <h2>Découvrez <i>YOULIVE</i></h2>
-        <marquee><p>
-            Découvrez <b><i>YOULIVE</i></b>, une plateforme interactive révolutionnaire pour vos événements. 
-            Avec notre service, chaque participant peut partager en direct des vidéos et contenus via 
-            des géotags, qui seront projetés sur des écrans sur place, créant ainsi une expérience immersive 
-            et collective. Mais ce n’est pas tout : nous compilons tous ces contenus pour former une capsule 
-            temporelle numérique, préservant vos souvenirs de manière innovante et durable.
-        </p></marquee>
-        <p>
-            <marquee>Grâce à la géolocalisation et aux vidéos en direct, chaque participant contribue à l'événement en 
-            temps réel, qu'il soit présent ou non. Cette approche unique fusionne l’interaction sociale en ligne 
-            avec l’expérience physique de l’événement, vous permettant de vivre et revivre les moments forts de manière 
-            inédite. Choisissez <i><b>YOULIVE</b></i> pour transformer vos événements en expériences mémorables et participatives.</marquee>
-        </p>
-    </section>
-
-    <!-- Section Upload de vidéos -->
-    <section id="upload-video">
-        <h2>Téléchargez votre vidéo</h2>
-        <form id="videoForm">
-            <input type="file" id="videoInput" accept="video/*">
-            <button type="submit">Envoyer la vidéo</button>
-        </form>
-        <h3>Galerie de vidéos</h3>
-        <div id="videoGallery"></div>
-    </section>
-
-    <!-- Section Appel à l'action -->
-    <section id="cta">
-        <h2>Prêt à vivre l'expérience ?</h2>
-        <a href="#evenements" class="cta-button">Découvrez nos événements</a>
-    </section>
-
-    <!-- Formulaire d'inscription -->
-    <section id="inscription">
-        <h2>Inscrivez-vous pour participer à l'événement</h2>
+        <h2 class="fade-in">Inscription / Connexion</h2>
         <form id="registrationForm">
-            <label for="name">Nom complet :</label>
-            <input type="text" id="name" name="name" required>
+            <label for="name">Nom :</label>
+            <input type="text" id="name" required> <!-- Champ pour le nom -->
 
             <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" required> <!-- Champ pour l'email -->
 
             <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" required> <!-- Champ pour le mot de passe -->
 
-            <button type="submit">S'inscrire</button>
+            <button type="submit">S'inscrire</button> <!-- Bouton pour soumettre le formulaire d'inscription -->
         </form>
 
-        <h2>Déjà inscrit ? Connectez-vous ici :</h2>
+        <h2 class="fade-in">Connexion</h2>
         <form id="loginForm">
             <label for="loginEmail">Email :</label>
-            <input type="email" id="loginEmail" name="loginEmail" required>
+            <input type="email" id="loginEmail" required> <!-- Champ pour l'email de connexion -->
 
             <label for="loginPassword">Mot de passe :</label>
-            <input type="password" id="loginPassword" name="loginPassword" required>
+            <input type="password" id="loginPassword" required> <!-- Champ pour le mot de passe de connexion -->
 
-            <button type="submit">Se connecter</button>
+            <button type="submit">Se connecter</button> <!-- Bouton pour soumettre le formulaire de connexion -->
         </form>
-    </section>
+    </div>
 
-    <!-- Footer -->
     <footer>
-        <p>© 2024 YOULIVE. Tous droits réservés.</p>
+        <p>© 2024 YOULIVE. Tous droits réservés.</p> <!-- Texte du footer -->
     </footer>
 
-    <script src="app.js"></script>
+    <script src="app.js"></script> <!-- Lien vers le fichier JavaScript pour la logique -->
 </body>
 </html>
 
