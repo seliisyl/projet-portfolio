@@ -1,29 +1,20 @@
-const express = require('express');
-const http = require('http');
-const socketIo = require('socket.io');
-const path = require('path');
+// Importation des modules nécessaires
+const express = require('express'); // Importation du module Express
+const path = require('path'); // Importation du module Path
 
-const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
+const app = express(); // Création d'une application Express
+const PORT = 3000; // Définition du port sur lequel le serveur va écouter
 
-// Servir les fichiers statiques du dossier 'frontend'
-app.use(express.static(path.join(__dirname, 'frontend')));
+// Middleware pour servir les fichiers statiques
+app.use(express.static(path.join(__dirname, 'frontend'))); // Spécifie que le dossier 'frontend' contient des fichiers statiques
 
-// Gestion des événements Socket.IO
-io.on('connection', (socket) => {
-    console.log('Un utilisateur est connecté.');
-
-    socket.on('video-upload', (videoData) => {
-        io.emit('new-video', videoData);
-    });
-
-    socket.on('disconnect', () => {
-        console.log('Un utilisateur est déconnecté.');
-    });
+// Route par défaut pour servir la page d'accueil
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'index.html')); // Envoie le fichier index.html
 });
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-    console.log(`Serveur démarré sur le port ${PORT}`);
+// Démarrage du serveur
+app.listen(PORT, () => {
+    console.log(`Serveur en cours d'exécution sur http://localhost:${PORT}`); // Message dans la console pour indiquer que le serveur est en cours d'exécution
 });
+
