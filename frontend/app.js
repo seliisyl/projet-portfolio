@@ -23,6 +23,9 @@ function checkVisibleElements() {
 // Écouteur d'événements pour vérifier la visibilité des éléments lors du défilement
 window.addEventListener('scroll', checkVisibleElements);
 
+// Écouteur d'événements pour vérifier la visibilité des éléments lors du redimensionnement de la fenêtre
+window.addEventListener('resize', checkVisibleElements);
+
 // Écouteur d'événements pour vérifier la visibilité des éléments au chargement de la page
 window.addEventListener('load', checkVisibleElements);
 
@@ -42,8 +45,17 @@ document.getElementById('registrationForm').addEventListener('submit', function 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    // Validation des données du formulaire
+    if (!name || !email || !password) {
+        alert('Veuillez remplir tous les champs');
+        return;
+    }
+
     // Logique pour gérer l'inscription (peut-être un appel API)
     console.log('Inscription:', { name, email, password });
+
+    // Succès de l'inscription
+    alert('Inscription réussie! Bienvenue sur YOULIVE!');
 
     // Réinitialiser le formulaire
     this.reset();
@@ -56,8 +68,17 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
 
+    // Validation des données du formulaire
+    if (!email || !password) {
+        alert('Veuillez remplir tous les champs');
+        return;
+    }
+
     // Logique pour gérer la connexion (peut-être un appel API)
     console.log('Connexion:', { email, password });
+
+    // Succès du retour de connexion
+    alert('Connexion réussie! Plaisir de vous revoir!');
 
     // Réinitialiser le formulaire
     this.reset();
