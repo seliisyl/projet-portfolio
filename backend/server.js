@@ -27,7 +27,7 @@ app.get('*', (req, res) => {
 });
 
 // Démarrer le serveur sur le port défini dans le fichier .env
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000 || 5001;
 app.listen(PORT, () => {
     console.log(`Serveur démarré sur http://localhost:${PORT}`);
 });
