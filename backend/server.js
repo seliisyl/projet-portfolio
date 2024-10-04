@@ -1,3 +1,4 @@
+// Importation des modules nécessaires
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
@@ -26,8 +27,9 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
-// Démarrer le serveur sur le port défini dans le fichier .env
-const PORT = process.env.PORT || 5000 || 5001;
+// Démarrer le serveur sur le port défini dans le fichier .env ou par défaut sur 5000
+const PORT = process.env.PORT || 5000; // Utilisez un seul port par défaut
 app.listen(PORT, () => {
     console.log(`Serveur démarré sur http://localhost:${PORT}`);
 });
+
