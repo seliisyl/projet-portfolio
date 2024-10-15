@@ -12,7 +12,6 @@ function isElementInViewport(el) {
 // Fonction pour ajouter la classe 'visible' aux éléments qui deviennent visibles
 function checkVisibleElements() {
     const fadeInElements = document.querySelectorAll('.fade-in');
-
     fadeInElements.forEach(element => {
         if (isElementInViewport(element)) {
             element.classList.add('visible');
@@ -20,67 +19,93 @@ function checkVisibleElements() {
     });
 }
 
-// Écouteur d'événements pour vérifier la visibilité des éléments lors du défilement
+// Ajouter des écouteurs pour la gestion de la visibilité au défilement, redimensionnement, et chargement
 window.addEventListener('scroll', checkVisibleElements);
-
-// Écouteur d'événements pour vérifier la visibilité des éléments lors du redimensionnement de la fenêtre
 window.addEventListener('resize', checkVisibleElements);
-
-// Écouteur d'événements pour vérifier la visibilité des éléments au chargement de la page
 window.addEventListener('load', checkVisibleElements);
 
-// Ajouter la classe 'visible' aux éléments fade-in lorsque le DOM est complètement chargé
 document.addEventListener('DOMContentLoaded', () => {
-    const fadeIns = document.querySelectorAll('.fade-in');
-    fadeIns.forEach((el) => {
-        el.classList.add('visible'); // Ajout de la classe 'visible'
-    });
-});
-
-// Gestion du formulaire d'inscription
-document.getElementById('registrationForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Empêche le comportement par défaut du formulaire
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    // Validation des données du formulaire
-    if (!name || !email || !password) {
-        alert('Veuillez remplir tous les champs');
-        return;
+    // Boutons d'événements
+    const eventButtons = document.querySelectorAll('.event-button');
+    if (eventButtons.length > 0) {
+        eventButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const eventId = this.getAttribute('data-event-id');
+                const accessEventSection = document.getElementById('access-event');
+                const eventIdInput = document.getElementById('eventId');
+                if (accessEventSection && eventIdInput) {
+                    accessEventSection.style.display = 'block';
+                    eventIdInput.value = eventId;
+                }
+            });
+        });
     }
 
-    // Logique pour gérer l'inscription (peut-être un appel API)
-    console.log('Inscription:', { name, email, password });
+    // Formulaire d'accès à l'événement
+    const accessForm = document.getElementById('accessForm');
+    if (accessForm) {
+        accessForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const eventId = document.getElementById('eventId').value;
+            const password = document.getElementById('password').value;
 
-    // Succès de l'inscription
-    alert('Inscription réussie! Bienvenue sur YOULIVE!');
-
-    // Réinitialiser le formulaire
-    this.reset();
-});
-
-// Gestion du formulaire de connexion
-document.getElementById('loginForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Empêche le comportement par défaut du formulaire
-
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-
-    // Validation des données du formulaire
-    if (!email || !password) {
-        alert('Veuillez remplir tous les champs');
-        return;
+            if (eventId === 'youlive1' && password === 'youlive2') {
+                window.location.href = `eventPage.html?eventId=${eventId}`;
+            } else {
+                alert('Identifiant ou mot de passe incorrect');
+            }
+        });
     }
 
-    // Logique pour gérer la connexion (peut-être un appel API)
-    console.log('Connexion:', { email, password });
-
-    // Succès du retour de connexion
-    alert('Connexion réussie! Plaisir de vous revoir!');
-
-    // Réinitialiser le formulaire
-    this.reset();
+    // Charger les détails de l'événement si nous sommes sur la page de l'événement
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventId = urlParams.get('eventId');
+    if (eventId) {
+        loadEventDetails(eventId);
+    }
 });
+
+// Fonction pour charger les détails de l'événement
+function loadEventDetails(eventId) {
+    const events = [
+        { id: '1', streamUrls: ['https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID1', 'https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID2'], videos: ['video1.mp4', 'video2.mp4'], photos: ['images/event1.jpg', 'images/event2.jpg'] },
+        { id: '2', streamUrls: ['https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID1', 'https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID2'], videos: ['video3.mp4', 'video4.mp4'], photos: ['images/event3.jpg', 'images/event4.jpg'] },
+        { id: '3', streamUrls: ['https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID1', 'https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID2'], videos: ['video5.mp4', 'video6.mp4'], photos: ['images/event5.jpg', 'images/event6.jpg'] }
+    ];
+
+    const event = events.find(e => e.id === eventId);
+
+    if (event) {
+        const streamElements = document.querySelectorAll('.stream');
+        const videoGallery = document.getElementById('videoGallery');
+        const photoGallery = document.getElementById('photoGallery');
+        
+        // Initialisation des streamings
+        if (streamElements.length > 0) {
+            streamElements.forEach((el, index) => {
+                el.src = event.streamUrls[index];
+                el.addEventListener('click', () => {
+                    el.classList.toggle('fullscreen');
+                });
+            });
+        }
+
+        // Charger la galerie vidéo
+        if (videoGallery) {
+            videoGallery.innerHTML = event.videos.map(video =>
+                `<video width="300" controls>
+                    <source src="${video}" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>`
+           ).join('');
+        }
+
+        // Charger la galerie de photos
+        if (photoGallery) {
+            photoGallery.innerHTML = event.photos.map(photo =>
+                `<img src="${photo}" alt="Photo de l'événement" width="150">`
+            ).join('');
+        }
+    }
+}
 
